@@ -4,13 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import io.silv.pokemon.repository.PokemonPagingRepository
+import io.silv.pokemon.repository.PokemonRepository
 import io.silv.pokemon.repository.toUiPokemon
 import kotlinx.coroutines.flow.map
 
-class HomeVM: ViewModel() {
-
-    private val pokemonRepository = PokemonPagingRepository()
+class HomeVM(
+    pokemonRepository: PokemonRepository
+): ViewModel() {
 
     // uses a unidirectional data flow
     // state is passed downwards and ui displays it

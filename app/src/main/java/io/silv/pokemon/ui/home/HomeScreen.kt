@@ -24,6 +24,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -32,13 +34,22 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import io.silv.DependencyGraph
 import io.silv.pokemon.ui.theme.Pastel
+
+class HomeVMFactory: ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return HomeVM(
+            pokemonRepository = DependencyGraph.pokemonRepository
+        ) as T
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
 
-    val viewModel = viewModel<HomeVM>()
+    val viewModel = viewModel<HomeVM>(factory = HomeVMFactory())
     // collectAsLazyPagingItems is provided in paging 3 library
     val pokemonPagingData = viewModel.pokemonPagingData.collectAsLazyPagingItems()
 

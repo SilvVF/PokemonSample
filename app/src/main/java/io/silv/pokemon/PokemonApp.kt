@@ -1,7 +1,7 @@
 package io.silv.pokemon
 
 import android.app.Application
-import io.silv.pokemon.local.PokeDb
+import io.silv.DependencyGraph
 
 class PokemonApp: Application() {
 
@@ -9,6 +9,6 @@ class PokemonApp: Application() {
         super.onCreate()
 
         // create the room db instance
-        PokeDb.init(this)
+        DependencyGraph.init(this)
     }
 }
