@@ -1,6 +1,5 @@
 package io.silv.pokemon.repository.paging
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -29,7 +28,6 @@ class PokemonRemoteMediator(
     }
 
     private fun getIdFromUrl(url: String): Int {
-        Log.d("url", url)
         return url.removeSuffix("/")
             .takeLastWhile { it.isDigit() }
             .toInt()
