@@ -3,6 +3,11 @@ package io.silv.pokemon.network.types.pokemon
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Pokemon data that can be gotten gotten from calling https://pokeapi.co/api/v2/pokemon/{id}.
+ *
+ * @param sprites contains the image urls.
+ */
 data class Pokemon(
     @SerializedName("abilities")
     val abilities: List<Ability>,

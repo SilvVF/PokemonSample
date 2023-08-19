@@ -7,6 +7,18 @@ import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
 
+
+/**
+ * @property id id of the associated pokemon resource in [PokemonResource] table.
+ * @property offset offset that was used when making the request using [io.silv.pokemon.network.PokemonService].
+ *
+ * Creating a separate table to hold the offset for pagination can be used
+ * to avoid attaching the data to the entity itself. The other option would be to
+ * attach an offset column to the [PokemonResource] itself.
+ * Enforces separation of concerns docs show this method.
+ *
+ * - [paging 3 docs](https://developer.android.com/topic/libraries/architecture/paging/v3-network-db)
+ */
 @Entity
 data class RemoteKey(
     @PrimaryKey val id: Int,

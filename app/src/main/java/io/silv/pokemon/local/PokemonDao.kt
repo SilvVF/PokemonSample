@@ -8,6 +8,17 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
+/**
+ * [Dao] used to update pokemon resources for the paginated list.
+ *
+ * @property pagingData [PagingSource] used in [io.silv.pokemon.repository.PokemonPagingRepository]
+ * to create the paging source for the paging source factory (see docs below).
+ * @property clear [Query] deletes all resources in the [PokemonResource] table.
+ * @property upsertAll [Insert] inserts all [PokemonResource]'s and replaces on conflict.
+ * @property update [Update] update [PokemonResource] resource.
+ *
+ * - [paging 3 docs](https://developer.android.com/topic/libraries/architecture/paging/v3-network-db)
+ */
 @Dao
 interface PokemonDao {
 

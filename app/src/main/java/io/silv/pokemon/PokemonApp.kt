@@ -8,6 +8,7 @@ class PokemonApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // create the room db instance
         PokeDb.init(this)
     }
 }
